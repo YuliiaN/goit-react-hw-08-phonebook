@@ -15,11 +15,17 @@ code {
 }
 
 ul,
+h1,
 h2,
 p {
   margin: 0;
+  padding: 0;
 }
 
 button {
   cursor: pointer;
+}
+
+.active {
+  color: var(--chakra-colors-purple-500);
 }

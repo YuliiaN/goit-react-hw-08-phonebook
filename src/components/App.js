@@ -1,44 +1,29 @@
-import Section from './Section/Section';
-import Form from './Form/Form';
-import ContactsList from './ContactsList/ContactsList';
-import Filter from './Filter/Filter';
-import Loader from './Loader/Loader';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectContacts, selectLoading } from 'redux/contacts/selectors';
-import { selectFilter } from 'redux/filter/selectors';
-import { getContacts } from 'redux/operations';
-import { useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { Container } from '@chakra-ui/react';
+import { Notify } from 'notiflix';
+import { routes } from 'routes';
+import Header from './Header/Header';
+import Home from 'pages/Home';
+import Register from 'pages/Register';
+import Login from 'pages/Login';
+import Contacts from 'pages/Contacts';
+
+Notify.init({
+  position: 'right-bottom',
+});
 
 export const App = () => {
-  const contacts = useSelector(selectContacts);
-  const loading = useSelector(selectLoading);
-  const dispatch = useDispatch();
-  const filter = useSelector(selectFilter);
-
-  const selectedContacts = contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
-  useEffect(() => {
-    dispatch(getContacts());
-  }, [dispatch]);
-
   return (
-    <>
-      <Section title="Phonebook">
-        <Form></Form>
-      </Section>
-      <Section title="Contacts">
-        {loading && <Loader />}
-        {contacts.length ? (
-          <>
-            <Filter title="Find contacts by name" />
-            <ContactsList currentContacts={selectedContacts} />
-          </>
-        ) : (
-          <p>Your phonebook is empty</p>
-        )}
-      </Section>
-    </>
+    <Container maxW="1200px" outline="1px solid green">
+      <Routes>
+        <Route path={routes.HOME} element={<Header />}>
+          <Route index element={<Home />} />
+          <Route path={routes.REGISTER} element={<Register />} />
+          <Route path={routes.LOGIN} element={<Login />} />
+          <Route path={routes.CONTACTS} element={<Contacts />} />
+        </Route>
+        <Route path="*" element={<Navigate to={routes.HOME} />} />
+      </Routes>
+    </Container>
   );
 };
