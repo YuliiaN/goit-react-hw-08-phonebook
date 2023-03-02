@@ -1,13 +1,13 @@
-import SectionStyled from './Section.styled';
-import TitleStyled from './Title.styled';
 import PropTypes from 'prop-types';
 
 const Section = ({ title, children }) => {
   return (
-    <SectionStyled>
-      <TitleStyled>{title}</TitleStyled>
+    <section style={{ padding: '40px' }}>
+      <h2 style={{ fontSize: '32px', fontWeight: '600', marginBottom: '20px' }}>
+        {title}
+      </h2>
       {children}
-    </SectionStyled>
+    </section>
   );
 };
 

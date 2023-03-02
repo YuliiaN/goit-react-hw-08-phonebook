@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Section from 'components/Section/Section';
+import { Text } from '@chakra-ui/layout';
 import Form from 'components/Form/Form';
 import ContactsList from 'components/ContactsList/ContactsList';
 import Filter from 'components/Filter/Filter';
@@ -41,7 +42,7 @@ const Contacts = () => {
               <ContactsList currentContacts={selectedContacts} />
             </>
           ) : (
-            <p>Your phonebook is empty</p>
+            <Text>Your phonebook is empty</Text>
           )}
         </Section>
       </>

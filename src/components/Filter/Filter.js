@@ -1,4 +1,4 @@
-import { FilterTitleStyled, FilteredInputStyled } from './Filter.styled';
+import { Input } from '@chakra-ui/input';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filter/filterSlice';
@@ -14,8 +14,10 @@ const Filter = ({ title }) => {
 
   return (
     <>
-      <FilterTitleStyled>{title}</FilterTitleStyled>
-      <FilteredInputStyled
+      <h2 style={{ fontSize: '18px', fontWeight: '500' }}>{title}</h2>
+      <Input
+        w="400px"
+        mb={6}
         type="text"
         name="filter"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"

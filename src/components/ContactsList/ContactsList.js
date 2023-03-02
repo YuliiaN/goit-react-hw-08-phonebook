@@ -1,8 +1,7 @@
-import {
-  ContactsListStyled,
-  ContactsListItem,
-  ContactsListButton,
-} from './ContactsList.styled';
+import { UnorderedList, ListItem } from '@chakra-ui/layout';
+import { Text } from '@chakra-ui/layout';
+import { Button } from '@chakra-ui/button';
+
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
@@ -11,21 +10,26 @@ const ContactsList = ({ currentContacts }) => {
   const dispatch = useDispatch();
 
   return (
-    <ContactsListStyled>
+    <UnorderedList fontSize="md" display="flex" flexDir="column" gap="10px">
       {currentContacts.map(({ id, name, number }) => (
-        <ContactsListItem key={id}>
-          {name}: {number}
-          <ContactsListButton
+        <ListItem key={id} display="flex" alignItems="center" gap="10px">
+          <Text as="b">
+            {name}: {number}
+          </Text>
+          <Button
+            size="sm"
+            h="25px"
+            variant="outline"
             type="button"
             onClick={() => {
               dispatch(deleteContact(id));
             }}
           >
             delete
-          </ContactsListButton>
-        </ContactsListItem>
+          </Button>
+        </ListItem>
       ))}
-    </ContactsListStyled>
+    </UnorderedList>
   );
 };
 
