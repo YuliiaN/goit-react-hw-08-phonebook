@@ -6,7 +6,7 @@ import { Notify } from 'notiflix';
 import { FormLabel } from '@chakra-ui/form-control';
 import { Button } from '@chakra-ui/button';
 import { Input } from '@chakra-ui/input';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
 
 export const Form = () => {

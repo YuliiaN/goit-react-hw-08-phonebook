@@ -17,7 +17,6 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('/users/signup', credentials);
-      console.log('hey');
       setAuthHeader(res.data.token);
       localStorage.setItem('token', res.data.token);
       Notify.success(`${res.data.user.name}, you were successfully registered`);
@@ -69,7 +68,7 @@ export const refreshUser = createAsyncThunk(
 
     try {
       setAuthHeader(persistedToken);
-      const res = await axios.get('/users/me');
+      const res = await axios.get('/users/current');
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

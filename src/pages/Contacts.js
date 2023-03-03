@@ -10,7 +10,7 @@ import Loader from 'components/Loader/Loader';
 
 import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { selectContacts, selectLoading } from 'redux/contacts/selectors';
-import { getContacts } from 'redux/operations';
+import { getContacts } from 'redux/contacts/operations';
 import { selectFilter } from 'redux/filter/selectors';
 
 const Contacts = () => {
