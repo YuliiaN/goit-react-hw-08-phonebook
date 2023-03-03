@@ -15,6 +15,7 @@ import Register from 'pages/Register';
 import Login from 'pages/Login';
 import Contacts from 'pages/Contacts';
 import Layout from './Layout';
+import PublicRoute from './PublicRoute';
 
 Notify.init({
   position: 'right-bottom',
@@ -34,12 +35,12 @@ export const App = () => {
         <Routes>
           <Route path={routes.HOME} element={<Layout />}>
             <Route index element={<Home />} />
-            {/* <Route path={routes.REGISTER} element={<Register />} /> */}
+            <Route path={routes.HOME} element={<PublicRoute />} />
             <Route
               path={routes.REGISTER}
               element={
                 <RestrictedRoute
-                  redirectTo="/contacts"
+                  redirectTo={routes.CONTACTS}
                   component={<Register />}
                 />
               }
@@ -47,7 +48,10 @@ export const App = () => {
             <Route
               path={routes.LOGIN}
               element={
-                <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+                <RestrictedRoute
+                  redirectTo={routes.CONTACTS}
+                  component={<Login />}
+                />
               }
             />
             <Route

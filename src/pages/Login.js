@@ -6,6 +6,7 @@ import Contacts from './Contacts';
 const Login = () => {
   const isLogged = useSelector(selectIsLoggedIn);
   return isLogged ? <Contacts /> : <LoginForm />;
+  // return <LoginForm />;
 };
 
 export default Login;
