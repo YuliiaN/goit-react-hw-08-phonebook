@@ -35,8 +35,8 @@ export const App = () => {
         <Routes>
           <Route path={routes.HOME} element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path={routes.HOME} element={<PublicRoute />} />
-            <Route
+            {/* <Route path={routes.HOME} element={<PublicRoute />} /> */}
+            {/* <Route
               path={routes.REGISTER}
               element={
                 <RestrictedRoute
@@ -44,8 +44,9 @@ export const App = () => {
                   component={<Register />}
                 />
               }
-            />
-            <Route
+            /> */}
+            <Route path={routes.REGISTER} element={<Register />} />
+            {/* <Route
               path={routes.LOGIN}
               element={
                 <RestrictedRoute
@@ -53,13 +54,15 @@ export const App = () => {
                   component={<Login />}
                 />
               }
-            />
+            /> */}
+            <Route path={routes.LOGIN} element={<Login />} />
             <Route
               path={routes.CONTACTS}
               element={
                 <PrivateRoute redirectTo="/login" component={<Contacts />} />
               }
             />
+            {/* <Route path={routes.CONTACTS} element={<Contacts />} /> */}
           </Route>
           <Route path="*" element={<Navigate to={routes.HOME} />} />
         </Routes>
